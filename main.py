@@ -11,7 +11,7 @@ def main():
     To get the report.
     """
     str_mon = store_monitoring()
-    report_id = str_mon.trigger_report(sample=20)  ## 2023, 1, 24
+    report_id = str_mon.trigger_report() 
     str_mon.get_report(report_id)
 
 

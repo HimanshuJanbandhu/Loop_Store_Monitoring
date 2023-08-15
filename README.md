@@ -24,7 +24,7 @@ python3 Store_Monitoring/DataLoader/mongodb_loader.py
 
 4. Once your mysql and mongodb databases are created, up and running. You can run the project using the following command. It will run the ```trigger_report``` and ```get_report``` apis
 ```
-python3 main.py
+nohup python3 main.py > store_monitoring.log  
 ```
 # Working Explained
 ## Assumptions
@@ -91,12 +91,21 @@ or
 
 7. Hence, for every store uptime and downtime is calculated for last_hour, last_day and last_week.
 
+## Extra Functionality
+### Sampling
+I've provided a sampling parameter in the trigger_report endpoint. This would help you to run the pipeling to test it. You can provide the number of stores you want to test on, let's say `N`, and then you would get only the result on the first `N` stores. Otherwise you would get thre report for all stores.
+
+I've provided two sample reports, 
+First one is a report with first 20 stores, and starting date was 24/1/2023
+Second one is a report with first 20 stores, and starting date is 14/08/2023
+
 ## Unclear
 1. When we are talking about last hour 
 Do we consider 60 mins from this second or the last hour altogether.
 Similar argument can be made about day and week.
 
 2. What to do about the status that we recieve when the restaurent in closed. Is it relevant, do we need to use it?
+3. On a system level, there should be a list of stores that must be provided.
 
 # Improvements
 There are still some improvements that can be made, but due to constraints on time I wasn't able to implement,
